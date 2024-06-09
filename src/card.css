@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    font-family: 'Poppins',sans-serif;
+}
+.card{
+    width: 70%;
+    margin-left: 200px;
+}
+.card-img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 10px;
+}
+.image{
+    background-color: rgb(10, 41, 67);
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inner{
+    border-radius: 10px;
+    overflow: hidden;
+   
+}
+.game-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+}
+.card-name{
+    background-color: aliceblue;
+}
+.slick-slide > div{
+    margin: 0 10px;
+}
+
