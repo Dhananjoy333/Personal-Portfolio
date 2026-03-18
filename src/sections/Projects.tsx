@@ -1,10 +1,9 @@
-import darkSaasLandingPage from "@/assets/images/dark-saas-landing-page.png";
-import lightSaasLandingPage from "@/assets/images/light-saas-landing-page.png";
+import goCart from "@/assets/images/goCart.png";
+import worldQuiz from "@/assets/images/worldQuiz.png"
 import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
 import Image from "next/image";
 import CheckCircleIcon from '@/assets/icons/check-circle.svg'
 import ArrowUpRightIcon from '@/assets/icons/arrow-up-right.svg'
-import grainImage from '@/assets/images/grain.jpg'
 import { SectionHeader } from "@/components/SectionHeader";
 import { Card } from "@/components/Card";
 
@@ -12,26 +11,26 @@ const portfolioProjects = [
   {
     company: "Acme Corp",
     year: "2022",
-    title: "Dark Saas Landing Page",
+    title: "Go Cart",
     results: [
       { title: "Enhanced user experience by 40%" },
       { title: "Improved site speed by 50%" },
       { title: "Increased mobile traffic by 35%" },
     ],
-    link: "https://youtu.be/4k7IdSLxh6w",
-    image: darkSaasLandingPage,
+    link: "https://gocart-seven-gold.vercel.app/",
+    image: goCart,
   },
   {
     company: "Innovative Co",
     year: "2021",
-    title: "Light Saas Landing Page",
+    title: "World Quiz",
     results: [
       { title: "Boosted sales by 20%" },
       { title: "Expanded customer reach by 35%" },
       { title: "Increased brand awareness by 15%" },
     ],
-    link: "https://youtu.be/7hi5zwO75yc",
-    image: lightSaasLandingPage,
+    link: "https://worldquiiz.netlify.app/",
+    image: worldQuiz,
   },
   {
     company: "Quantum Dynamics",
@@ -49,7 +48,7 @@ const portfolioProjects = [
 
 export const ProjectsSection = () => {
   return(
-    <section className="pb-16 lg:py-24">
+    <section className="pb-16 lg:py-24" id="projects">
       <div className="container">
         <SectionHeader 
         eyebrow="Real-World Results" 

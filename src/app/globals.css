@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    
     .nav-item {
-        @apply px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:bg-white/10 hover:text-white transition duration-300
+        /* Added a slightly longer transition for the color swap */
+        @apply px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:bg-white/10 hover:text-white transition-all duration-500 ease-in-out;
     }
 
     .hero-ring {
@@ -17,3 +22,4 @@
         @apply lg:max-w-5xl;
     }
 }
+
