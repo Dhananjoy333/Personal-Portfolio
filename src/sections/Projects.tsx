@@ -1,7 +1,10 @@
+"use client";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import Image from "next/image";
 import goCart from "@/assets/images/goCart.png";
 import worldQuiz from "@/assets/images/worldQuiz.png"
 import devEvent from "@/assets/images/devEvent.png";
-import Image from "next/image";
 import CheckCircleIcon from '@/assets/icons/check-circle.svg'
 import ArrowUpRightIcon from '@/assets/icons/arrow-up-right.svg'
 import { SectionHeader } from "@/components/SectionHeader";
@@ -89,95 +92,177 @@ const portfolioProjects = [
   },
 ];
 
+// 1. Define Animation Variants for the "Waterfall" effect
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1, // Time between each child (0.1s)
+      delayChildren: 0.2,   // Wait before starting the sequence
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.5, ease: "easeOut" } 
+  },
+};
+
 export const ProjectsSection = () => {
-  return(
-    <section className="pb-16 lg:py-24" id="projects">
+  const containerRef = useRef(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  return (
+    <section ref={containerRef} className="pb-16 lg:py-24" id="projects">
       <div className="container">
-        <SectionHeader 
-        eyebrow="Real-World Results" 
-        title="Featured Projects"
-        description="See how I transformed concepts into engaging digital experiences."/>
+        
+        {/* 1. Wrap the Header in a motion.div using the same staggered logic */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {/* Note: If SectionHeader allows you to pass variants inside, do that. 
+              Otherwise, wrapping the whole component is the fastest way. */}
+          <motion.div variants={itemVariants}>
+            <SectionHeader
+              eyebrow="Real-World Results"
+              title="Featured Projects"
+              description="See how I transformed concepts into engaging digital experiences."
+            />
+          </motion.div>
+        </motion.div>
+        
         <div className="flex flex-col gap-20 mt-10 md:mt-20">
-          {portfolioProjects.map((project , projectIndex) => (
-            <Card
-             key={project.title} 
-             className="px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:pt-16 lg:px-20 sticky"
-             style={{
-              top: `calc(64px + ${projectIndex * 40}px)`
-             }}>
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                <div className="lg:pb-16">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <div className="flex flex-wrap items-center gap-2">
-                      {project.techStack.map((tech) => (
-                        <div 
-                          key={tech.name} 
-                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10"
-                        >
-                          <tech.icon className="size-5" />
-                          <span className="text-xs font-semibold text-white/70">{tech.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <span className="text-white/20">&bull;</span>
-                    <span className="uppercase tracking-widest text-sm font-bold bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text">
-                      {project.year}
-                    </span>
-                  </div>
-                  <h3 className="font-serif text-2xl mt-2 md:text-4xl md:mt-5">{project.title}</h3>
-                  <hr className="border-t-2 border-white/5 mt-4 md:mt-5"/>
-                  <ul className="flex flex-col gap-4 mt-4 md:mt-5">
-                    {project.results.map( (result,index) => (
-                      <li key={index} className="flex gap-2 text-sm md:text-base text-white/50"> 
-                        <CheckCircleIcon className="size-5 md:size-6"/>
-                        <span>{result.title}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-8 flex flex-col gap-3">
-                    <span className="text-sm text-white/40 font-medium">Deployment:</span>
-                    <div className="flex flex-wrap gap-3">
-                      {project.hosts.map((host) => (
-                        <div 
-                          key={host.name} 
-                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10"
-                        >
-                          <host.icon className="size-4 text-emerald-300" />
-                          <div className="flex flex-col">
-                            <span className="text-[10px] uppercase tracking-wider text-white/30 leading-none">
-                              {host.role}
-                            </span>
-                            <span className="text-xs font-semibold text-white/80">
-                              {host.name}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="flex flex-col md:flex-row gap-4 mt-8">
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
-                      <button className="bg-white text-gray-950 h-12 w-full md:px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 cursor-pointer hover:bg-white/90 transition-all">
-                        <span>Visit Live Site</span>
-                        <ArrowUpRightIcon className="size-4"/>
-                      </button>
-                    </a>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
-                      <button className="border border-white/20 text-white h-12 w-full md:px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 cursor-pointer hover:bg-white/10 transition-all">
-                        <GithubIcon className="size-5" /> 
-                        <span>Github Repo</span>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-                <div className="relative">
-                  <Image src={project.image} alt={project.title} className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none"/>
-                </div>
-              </div>
-            </Card>
+          {portfolioProjects.map((project, projectIndex) => (
+            <ProjectCard 
+              key={project.title} 
+              project={project} 
+              projectIndex={projectIndex} 
+              totalProjects={portfolioProjects.length}
+              scrollYProgress={scrollYProgress}
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
+};
+
+const ProjectCard = ({ project, projectIndex, totalProjects, scrollYProgress }: any) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Tilt & Scale Logic
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => { x.set(0); y.set(0); };
+
+  const targetScale = 1 - ((totalProjects - projectIndex) * 0.05);
+  const scale = useTransform(scrollYProgress, [projectIndex / totalProjects, 1], [1, targetScale]);
+
+  return (
+    <div className="sticky top-0" style={{ paddingTop: `${projectIndex * 40}px` }}>
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ scale, rotateX, rotateY, transformStyle: "preserve-3d" }}
+        transition={{ ease: "easeOut" }}
+        className="perspective-1000" 
+      >
+        <Card className="px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:pt-16 lg:px-20 overflow-hidden relative group">
+          
+          {/* 2. Apply containerVariants to the Grid */}
+          <motion.div 
+            className="lg:grid lg:grid-cols-2 lg:gap-16"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            
+            <div className="lg:pb-16 [transform:translateZ(50px)]">
+              {/* 3. Wrap each section in motion and apply itemVariants */}
+              <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  {project.techStack.map((tech: any) => (
+                    <div key={tech.name} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                      <tech.icon className="size-5" />
+                      <span className="text-xs font-semibold text-white/70">{tech.name}</span>
+                    </div>
+                  ))}
+                </div>
+                <span className="text-white/20">&bull;</span>
+                <span className="text-sm font-bold bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text uppercase tracking-widest">
+                  {project.year}
+                </span>
+              </motion.div>
+              
+              <motion.h3 variants={itemVariants} className="font-serif text-2xl mt-2 md:text-4xl md:mt-5">
+                {project.title}
+              </motion.h3>
+              
+              <motion.hr variants={itemVariants} className="border-t-2 border-white/5 mt-4 md:mt-5" />
+              
+              <ul className="flex flex-col gap-4 mt-4 md:mt-5">
+                {project.results.map((result: any, index: number) => (
+                  <motion.li key={index} variants={itemVariants} className="flex gap-2 text-sm md:text-base text-white/50">
+                    <CheckCircleIcon className="size-5 md:size-6 text-emerald-300/50" />
+                    <span>{result.title}</span>
+                  </motion.li>
+                ))}
+              </ul>
+
+              <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-4 mt-8">
+                <a href={project.link} target="_blank" className="w-full md:w-auto">
+                  <button className="bg-white text-gray-950 h-12 w-full md:px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 hover:bg-white/90 transition-all active:scale-95">
+                    <span>Visit Live Site</span>
+                    <ArrowUpRightIcon className="size-4" />
+                  </button>
+                </a>
+                <a href={project.github} target="_blank" className="w-full md:w-auto">
+                  <button className="border border-white/20 text-white h-12 w-full md:px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 hover:bg-white/10 transition-all">
+                    <GithubIcon className="size-5" />
+                    <span>Github Repo</span>
+                  </button>
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Image side also follows the stagger */}
+            <motion.div variants={itemVariants} className="relative [transform:translateZ(80px)]">
+              <Image
+                src={project.image}
+                alt={project.title}
+                className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none rounded-t-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+              />
+            </motion.div>
+
+          </motion.div>
+        </Card>
+      </motion.div>
+    </div>
+  );
 };

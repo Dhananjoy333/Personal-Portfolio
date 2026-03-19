@@ -15,11 +15,31 @@
     .hero-ring {
         @apply absolute inset-0 size-[620px] border-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-emerald-300/5 shadow-[0_0_80px_inset] shadow-emerald-300/5
     }
+        /* Fix for Timeline Date color in Dark Mode */
+    .vertical-timeline-element-date {
+        @apply text-white/50 font-sans !important;
+    }
+
+    /* Adjust line thickness and glow */
+    .vertical-timeline::before {
+        @apply shadow-[0_0_15px_rgba(110,231,183,0.1)];
+    }
 }
 
 @layer utilities{
     .container {
         @apply lg:max-w-5xl;
+    }
+}
+
+
+/* On Mobile: Ensure icons and line stay on the left */
+@media only screen and (max-width: 1169px) {
+    .vertical-timeline-element-icon {
+        @apply left-4 !important;
+    }
+    .vertical-timeline-element-content {
+        @apply ml-16 !important;
     }
 }
 
