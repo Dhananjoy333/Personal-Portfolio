@@ -1,64 +1,83 @@
 "use client";
 import { Card } from "@/components/Card";
 import { SectionHeader } from "@/components/SectionHeader";
+import profilePic from "@/assets/images/photo.png";
 import bookImage from "@/assets/images/book-cover.png"
 import Image from "next/image";
-import JavascriptIcon from '@/assets/icons/square-js.svg'
-import HTMLIcon from '@/assets/icons/html5.svg'
-import CssIcon from '@/assets/icons/css3.svg'
-import ReactIcon from '@/assets/icons/react.svg'
-import ChromeIcon from '@/assets/icons/chrome.svg'
-import GithubIcon from '@/assets/icons/github.svg'
-import mapImage from "@/assets/images/map.png"
-import smileMemoji from "@/assets/images/memoji-smile.png"
 import { Cardheader } from "@/components/Cardheader";
 import { ToolboxItems } from "@/components/ToolboxItems";
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import cv_bg from "@/assets/images/cv_bg.png"
+import cv from "@/assets/images/cv.png"
+import NextJsIcon from "@/assets/icons/nextjs.svg"
+import ReactJsIcon from "@/assets/icons/react_logo.svg"
+import TailwindIcon from "@/assets/icons/tailwind.svg"
+import PostgresIcon from "@/assets/icons/postgresql.svg"
+import MongodbIcon from "@/assets/icons/mongodb.svg"
+import Clerk from "@/assets/icons/clerk.svg"
+import Neon from "@/assets/icons/neon.svg"
+import VercelIcon from "@/assets/icons/vercel.svg"
+import Render from "@/assets/icons/render.svg"
+import Netlify from "@/assets/icons/netlify.svg"
+import CssIcon from "@/assets/icons/css3.svg"
+import GithubIcon from "@/assets/icons/github.svg"
 
 const toolboxItems = [
   {
-    title: 'Javascript',
-    iconsType: JavascriptIcon,
+    title: 'Tailwind CSS',
+    iconsType: TailwindIcon,
   },
   {
-    title: 'HTML5',
-    iconsType: HTMLIcon,
+    title: 'PostgreSQL',
+    iconsType: PostgresIcon,
   },
   {
-    title: 'CSS3',
-    iconsType: CssIcon,
+    title: 'MongoDB',
+    iconsType: MongodbIcon,
   },
   {
-    title: 'React',
-    iconsType: ReactIcon,
+    title: 'ReactJS',
+    iconsType: ReactJsIcon,
   },
   {
-    title: 'Chrome',
-    iconsType: ChromeIcon,
+    title: 'NextJS',
+    iconsType: NextJsIcon,
   },
   {
     title: 'Github',
     iconsType: GithubIcon,
+  },
+  {
+    title: 'Clerk',
+    iconsType: Clerk,
+  },
+  {
+    title: 'NeonDB',
+    iconsType: Neon,
+  },
+  {
+    title: 'Netlify',
+    iconsType: Netlify,
+  },
+  {
+    title: 'Render',
+    iconsType: Render,
+  },
+  {
+    title: 'Vercel',
+    iconsType: VercelIcon,
+  },
+  {
+    title: 'CSS 3',
+    iconsType: CssIcon,
   }
 ]
 
 const hobbies = [
   {
-    title: 'Painting',
-    emoji: '🎨',
-    left: '5%',
-    top: '5%'
-  },
-  {
-    title: 'Photography',
-    emoji: '📸',
-    left: '50%',
-    top: '5%'
-  },
-  {
-    title: 'Hiking',
-    emoji: '🥾',
+    title: 'Movies',
+    emoji: '🍿',
     left: '35%',
     top: '40%'
   },
@@ -102,13 +121,13 @@ export const AboutSection = () => {
       <div className="mt-20 flex flex-col gap-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
           <Card className="h-[320px] md:col-span-2 lg:col-span-1">
-            <Cardheader title="My Reads" description="Explore the books shaping my perspective."/>
-            <div className="w-40 mx-auto mt-2 md:mt-0">
-              <Image src={bookImage} alt="Book cover"/>
+            <Cardheader title="My Profile" />
+            <div className="w-48 mx-auto mt-2 md:-mt-14">
+              <Image src={profilePic} alt="Book cover" className=""/>
             </div>
           </Card>
           <Card className="h-[320px] md:col-span-3 lg:col-span-2">
-            <Cardheader title="My Toolbox" description="Explore the technologies and tools to craft exceptional digital experiences."
+            <Cardheader title="My Teck Stack" description="Here are the technologies and tools I use to craft exceptional digital experiences."
             className=""/>
             <ToolboxItems items={toolboxItems} className="" itemsWrapperClassName="animate-move-left [animation-duration:30s]"/>
             <ToolboxItems items={toolboxItems} className="mt-6 "
@@ -137,12 +156,17 @@ export const AboutSection = () => {
                 ))}
               </div>
           </Card>
-          <Card className="h-[320px] p-0 relative md:col-span-2 lg:col-span-1">
-            <Image src={mapImage} alt="map" className="h-full w-full object-cover object-left-top"/>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full  after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30"> 
+          <Card className="h-[320px] p-0 relative md:col-span-2 lg:col-span-1 ">           
+            <Image src={cv_bg} alt="map" className="h-full w-full object-left-top"/>
+            <h2 className="font-serif text-lg absolute top-4 left-1/2 -translate-x-1/2 text-white bg-black/40 px-3 py-1 rounded-md backdrop-blur-sm">
+              Download CV
+            </h2>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full  after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30 \"> 
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-20 animate-ping [animation-duration:2s]"></div>
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-10"></div>
-              <Image src={smileMemoji} alt="smiling memoji" className="size-20"/>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-10 "></div>
+              <a href="" download className="cursor-pointer relative z-30">
+                <Image src={cv} alt="cv logo" className="size-20"/>
+              </a>
             </div>
           </Card>
         </div>

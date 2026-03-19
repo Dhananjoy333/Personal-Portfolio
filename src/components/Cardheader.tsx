@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 export const Cardheader = ({title, description,className}: {
     title: string;
-    description : string,
+    description? : string,
     className? : string
 }) => {
   return (
