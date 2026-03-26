@@ -12,7 +12,7 @@ export const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const form = e.currentTarget; // ✅ store it here
+    const form = e.currentTarget; 
 
     try {
       await emailjs.sendForm(
@@ -23,7 +23,7 @@ export const ContactSection = () => {
       );
 
       alert("Message sent successfully 🚀");
-      form.reset(); // ✅ use stored reference
+      form.reset(); 
     } catch (error) {
       console.error(error);
       alert("Failed to send message ❌");

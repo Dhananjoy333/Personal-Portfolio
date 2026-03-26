@@ -21,11 +21,12 @@ import Render from "@/assets/icons/render.svg"
 import Netlify from "@/assets/icons/netlify.svg"
 import CssIcon from "@/assets/icons/css3.svg"
 import GithubIcon from "@/assets/icons/github.svg"
+import codebox from "@/assets/images/codebox.png"
 
 const portfolioProjects = [
   {
     title: "Go Cart",
-    year: "2022",
+    year: "2026",
     techStack: [
       { name: "Next.js", icon: NextJsIcon },
       { name: "Tailwind", icon: TailwindIcon },
@@ -34,10 +35,10 @@ const portfolioProjects = [
       { name: "Clerk", icon: Clerk },
     ],
     results: [
-      { title: "Multi-Vendor e-commerce website" },
-      { title: "Customer-Facing Storefront" },
-      { title: "Vendor Dashboards" },
-      { title: "Admin Panel" },
+      { title: "Multi-Vendor e-commerce website." },
+      { title: "Customer-Facing Storefront." },
+      { title: "Vendor Dashboards." },
+      { title: "Admin Panel." },
     ],
     hosts: [
       { name: "Vercel", role: "Fullstack", icon: VercelIcon },
@@ -48,7 +49,7 @@ const portfolioProjects = [
   },
   {
     title: "World Quiz",
-    year: "2021",
+    year: "2025",
     techStack: [
       { name: "React.Js", icon: ReactJsIcon },
       { name: "Css3", icon: CssIcon },
@@ -57,10 +58,10 @@ const portfolioProjects = [
       { name: "Clerk", icon: Clerk },
     ],
     results: [
-      { title: "Multiple quiz game modes" },
-      { title: "Global leaderboard system" },
-      { title: "User authentication with Clerk" },
-      { title: "Personal high score tracking" },
+      { title: "Multiple quiz game modes." },
+      { title: "Global leaderboard system." },
+      { title: "User authentication with Clerk." },
+      { title: "Personal high score tracking." },
     ],
     hosts: [
       { name: "Netlify", role: "Frontend", icon: Netlify },
@@ -72,16 +73,16 @@ const portfolioProjects = [
   },
   {
     title: "Dev Events",
-    year: "2021",
+    year: "2026",
     techStack: [
       { name: "Next.js", icon: NextJsIcon },
       { name: "Tailwind", icon: TailwindIcon },
       { name: "MongoDB", icon: MongodbIcon },
     ],
     results: [
-      { title: "Discover developer events happening near you" },
+      { title: "Discover developer events happening near you." },
       { title: "Events are tailored based on your city for better relevance." },
-      { title: "Users can easily apply/register for events directly from the platform" },
+      { title: "Users can easily apply/register for events directly from the platform." },
     ],
     hosts: [
       { name: "Vercel", role: "Fullstack", icon: VercelIcon },
@@ -89,6 +90,30 @@ const portfolioProjects = [
     link: "https://dev-events-pink.vercel.app/",
     github: "https://github.com/Dhananjoy333/Dev_Events",
     image: devEvent,
+  },
+  {
+    title: "Code Box",
+    year: "2026",
+    techStack: [
+      { name: "Next.js", icon: NextJsIcon },
+      { name: "Tailwind", icon: TailwindIcon },
+      { name: "PostgreSQL", icon: PostgresIcon },
+      { name: "Neon", icon: Neon },
+      { name: "Clerk", icon: Clerk },
+    ],
+    results: [
+      { title: "Modern e-learning platform with pixelated ui." },
+      { title: "Multiple Courses and Chapter with each chapters having multiple exercises." },
+      { title: "Interactive coding environment powered by Sandpack." },
+      { title: "Clean user dashboard with progress accross courses like enrolled courses, exercises completed etc." },
+      { title: "Auth and subscription implemented with clerk." }
+    ],
+    hosts: [
+      { name: "Vercel", role: "Fullstack", icon: VercelIcon },
+    ],
+    link: "https://code-box-sooty.vercel.app/",
+    github: "https://github.com/Dhananjoy333/CodeBox",
+    image: codebox,
   },
 ];
 
