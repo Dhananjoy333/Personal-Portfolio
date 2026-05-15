@@ -13,7 +13,6 @@ import NextJsIcon from "@/assets/icons/nextjs.svg"
 import ReactJsIcon from "@/assets/icons/react_logo.svg"
 import TailwindIcon from "@/assets/icons/tailwind.svg"
 import PostgresIcon from "@/assets/icons/postgresql.svg"
-import MongodbIcon from "@/assets/icons/mongodb.svg"
 import Clerk from "@/assets/icons/clerk.svg"
 import Neon from "@/assets/icons/neon.svg"
 import VercelIcon from "@/assets/icons/vercel.svg"
@@ -22,6 +21,8 @@ import Netlify from "@/assets/icons/netlify.svg"
 import CssIcon from "@/assets/icons/css3.svg"
 import GithubIcon from "@/assets/icons/github.svg"
 import codebox from "@/assets/images/codebox.png"
+import GSAPICON from '@/assets/icons/GSAPIcon.svg'
+import horizon from '@/assets/images/horizon.png'
 
 const portfolioProjects = [
   {
@@ -67,29 +68,29 @@ const portfolioProjects = [
       { name: "Netlify", role: "Frontend", icon: Netlify },
       { name: "Render", role: "Backend", icon: Render },
     ],
-    link: "https://worldquiiz.netlify.app/",
-    github: "https://github.com/Dhananjoy333/World-Quiz",
+    link: "https://world-quiz-nu.vercel.app/",
+    github: "https://github.com/Dhananjoy333/world_quiz",
     image: worldQuiz,
   },
   {
-    title: "Dev Events",
+    title: "Horizon",
     year: "2026",
     techStack: [
       { name: "Next.js", icon: NextJsIcon },
       { name: "Tailwind", icon: TailwindIcon },
-      { name: "MongoDB", icon: MongodbIcon },
+      { name: "GSAP", icon: GSAPICON },
     ],
     results: [
-      { title: "Discover developer events happening near you." },
-      { title: "Events are tailored based on your city for better relevance." },
-      { title: "Users can easily apply/register for events directly from the platform." },
+      { title: "Horizon is a visually immersive website focused on smooth animations, transitions, and interactive storytelling." },
+      { title: "Animated Background, Scroll Trigger, Scroll Clip-path" },
+      { title: "The project was primarily created to deepen understanding of GSAP and high-end frontend animation techniques." },
     ],
     hosts: [
-      { name: "Vercel", role: "Fullstack", icon: VercelIcon },
+      { name: "Vercel", role: "Frontend", icon: VercelIcon },
     ],
-    link: "https://dev-events-pink.vercel.app/",
-    github: "https://github.com/Dhananjoy333/Dev_Events",
-    image: devEvent,
+    link: "https://horizon-five-wine.vercel.app/",
+    github: "https://github.com/Dhananjoy333/Horizon",
+    image: horizon,
   },
   {
     title: "Code Box",

@@ -218,7 +218,7 @@ export const AboutSection = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full"> 
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-20 animate-ping"></div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-10 "></div>
-                  <a href="/myCV.pdf" download className="cursor-pointer relative z-30 block">
+                  <a href="/CV.pdf" download className="cursor-pointer relative z-30 block">
                     <Image src={cv} alt="cv logo" className="size-20"/>
                   </a>
                 </div>
